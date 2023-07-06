@@ -1,0 +1,5 @@
+version: 0.2
+phases:
+  build:
+    commands:
+      - aws s3api put-object --bucket red-july-2023-cicd-beta --key index.html --body index.html --content-type text/html --acl public-read
