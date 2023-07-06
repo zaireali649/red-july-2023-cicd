@@ -1,0 +1,7 @@
+version: 0.2
+phases:
+  build:
+    commands:
+      - aws s3api put-object --bucket red-july-2023-cicd-beta --key index.html --body index.html --content-type text/html --acl public-read
+      - if [ "$CODEBUILD_WEBHOOK_EVENT" == "PULL_REQUEST_MERGED" ]  ; 
+        then aws s3api put-object --bucket red-july-2023-cicd-prod --key index.html --body index.html --content-type text/html --acl public-read; fi
